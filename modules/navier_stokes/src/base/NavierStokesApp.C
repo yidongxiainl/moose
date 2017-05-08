@@ -108,6 +108,11 @@
 #include "WedgeFunction.h"
 
 // CNSFV (Compressible Navier-Stokes by Finite Volume)
+#include "CNSFVInitialDensity.h"
+#include "CNSFVInitialMomentumX.h"
+#include "CNSFVInitialMomentumY.h"
+#include "CNSFVInitialMomentumZ.h"
+#include "CNSFVInitialTotalEnergy.h"
 #include "CNSFVMachIC.h"
 #include "CNSFVPressureIC.h"
 
@@ -125,11 +130,15 @@
 #include "CNSFVRiemannInvariantBoundaryFlux.h"
 #include "CNSFVHLLCInflowOutflowBoundaryFlux.h"
 #include "CNSFVHLLCSlipBoundaryFlux.h"
+#include "CNSFVStagnationInletBoundaryFlux.h"
+#include "CNSFVStaticPressureOutletBoundaryFlux.h"
 #include "CNSFVFreeInflowBCUserObject.h"
 #include "CNSFVFreeOutflowBCUserObject.h"
 #include "CNSFVCharacteristicBCUserObject.h"
 #include "CNSFVRiemannInvariantBCUserObject.h"
 #include "CNSFVSlipBCUserObject.h"
+#include "CNSFVStagnationInletBCUserObject.h"
+#include "CNSFVStaticPressureOutletBCUserObject.h"
 
 #include "CNSFVBC.h"
 
@@ -291,6 +300,11 @@ NavierStokesApp::registerObjects(Factory & factory)
   registerFunction(WedgeFunction);
 
   // CNSFV
+  registerInitialCondition(CNSFVInitialDensity);
+  registerInitialCondition(CNSFVInitialMomentumX);
+  registerInitialCondition(CNSFVInitialMomentumY);
+  registerInitialCondition(CNSFVInitialMomentumZ);
+  registerInitialCondition(CNSFVInitialTotalEnergy);
   registerInitialCondition(CNSFVMachIC);
   registerInitialCondition(CNSFVPressureIC);
 
@@ -308,11 +322,15 @@ NavierStokesApp::registerObjects(Factory & factory)
   registerUserObject(CNSFVRiemannInvariantBoundaryFlux);
   registerUserObject(CNSFVHLLCInflowOutflowBoundaryFlux);
   registerUserObject(CNSFVHLLCSlipBoundaryFlux);
+  registerUserObject(CNSFVStagnationInletBoundaryFlux);
+  registerUserObject(CNSFVStaticPressureOutletBoundaryFlux);
   registerUserObject(CNSFVFreeInflowBCUserObject);
   registerUserObject(CNSFVFreeOutflowBCUserObject);
   registerUserObject(CNSFVCharacteristicBCUserObject);
   registerUserObject(CNSFVRiemannInvariantBCUserObject);
   registerUserObject(CNSFVSlipBCUserObject);
+  registerUserObject(CNSFVStagnationInletBCUserObject);
+  registerUserObject(CNSFVStaticPressureOutletBCUserObject);
 
   registerBoundaryCondition(CNSFVBC);
 
